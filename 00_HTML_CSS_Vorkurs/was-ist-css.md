@@ -737,13 +737,18 @@ p {
   border: 1px solid #abcdef; /* Blauish */
 }
 ```
+
+**Hilfreiche Links**
+
+* [RGB Colour Mixer](https://csfieldguide.org.nz/en/interactives/rgb-mixer/)
+
 ### Practice 🔥
 
 Öffne diese [**CodeSandbox**](https://codesandbox.io/s/ycdcv) als Startpunkt.
 
 - [ ] Füge den `h1` einen schwarzen `border-bottom` hinzu. Benutze dazu einen Hexadezimalen Shorthand
 - [ ] Die Navigationslinks sollten die Farbe `blue` haben, und wenn man mit der Maus darüber fährt, sollten sie `teal` werden
-- [ ] Setze die Schriftfamilie auf 'Arial'. Die Property soltle für alle Elemente vererbt werden.
+- [ ] Setze die Schriftfamilie auf 'Arial'. Die Property sollte für alle Elemente vererbt werden.
 - [ ] Die Textfarbe für alle Elemente sollte per Default auf auf ein sehr dunkles Grau gesetzt werden. Benutze dazu einen RGB-Angabe.
 
 Zeit: ~ 10 min
