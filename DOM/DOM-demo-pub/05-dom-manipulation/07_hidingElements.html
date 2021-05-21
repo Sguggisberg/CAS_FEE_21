@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hiding Elements Demo</title>
+  <style>
+    div {
+      border: solid 10px darkorchid;
+      width: 120px;
+      height: 50px;
+    }
+
+    button {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+<h1>Hiding Elements Demo</h1>
+<div id="div-1">Div1: Plain Div</div>
+<button id="btn-1">Toggle div-1.hidden</button>
+<button id="btn-2">Toggle div-1.style.visibility</button>
+<div id="div-2" style="display: flex;">Div2: div with display:flex</div>
+<button id="btn-3">Toggle div-2.hidden</button>
+<script>
+  const div1 = document.querySelector("#div-1");
+  const div2 = document.querySelector("#div-2");
+  const btn1 = document.querySelector("#btn-1");
+  const btn2 = document.querySelector("#btn-2");
+  const btn3 = document.querySelector("#btn-3");
+  btn1.addEventListener('click',
+    () => div1.hidden = !div1.hidden);
+  btn2.addEventListener('click',
+    () => {
+      div1.style.visibility = (div1.style.visibility !== "hidden") ? "hidden" : "visible";
+      console.log(div1.style.visibility);
+    });
+  btn3.addEventListener('click',
+    () => {
+      div2.hidden = !div2.hidden;
+      console.log(div2.hidden);
+    });
+</script>
+</body>
+</html>

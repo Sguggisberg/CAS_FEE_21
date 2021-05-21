@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The HTMLCollection Is Live</title>
+</head>
+<body>
+<h1>The HTMLCollection Is Live</h1>
+<main>
+  <ul>
+    <li>1st</li>
+    <li>2nd</li>
+    <li>3rd</li>
+    <li>4th</li>
+    <li>5th</li>
+  </ul>
+</main>
+<script>
+  const liElements = document.getElementsByTagName('li');
+
+  for (let i = 0; i < liElements.length; i++) {
+    liElements[i].remove();
+  }
+  console.log(document.querySelectorAll('ul')[0].children.length);
+
+</script>
+</body>
+</html>

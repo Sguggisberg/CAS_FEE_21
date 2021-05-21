@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.addEventListener('load', () => console.log("load", document.readyState));
+        document.addEventListener('DOMContentLoaded', () =>  console.log("ready", document.readyState));
+    </script>
+
+    <script src="script.js" async></script>
+    <script src="script1.js" async></script>
+    <script src="script2.js" async></script>
+
+    <script>
+        console.log("body", document.readyState);
+    </script>
+</head>
+<body>
+
+
+</body>
+</html>

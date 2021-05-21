@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Child Nodes</title>
+</head>
+<body>
+<h1>childNodes vs. children / firstChild vs. firstElementChild</h1>
+<nav>
+  <ul>
+    <li><a href="#">nav1</a></li>
+    <li><a href="#">nav2</a></li>
+    <li><a href="#">nav3</a></li>
+  </ul>
+</nav>
+<script>
+  const ulElement = document.querySelector('ul');
+  console.log('parentElement', ulElement.parentElement);
+  console.log('childNodes', ulElement.childNodes);
+  console.log('children', ulElement.children);
+  console.log('firstChild', ulElement.firstChild);
+  console.log('firstElementChild', ulElement.firstElementChild);
+  console.log('firstElementChild nextElementSibling', ulElement.firstElementChild.nextElementSibling);
+</script>
+
+</body>
+</html>

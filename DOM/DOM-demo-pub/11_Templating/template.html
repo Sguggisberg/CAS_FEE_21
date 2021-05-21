@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
+    <!--Das Template kann direkt im HTML definiert werden.-->
+    <script id="entry-template" type="text/x-handlebars-template">
+        {{#each this}}
+        <li>
+            <h3>{{title}}</h3>
+            <p>{{artist}}</p>
+        </li>
+        {{/each}}
+    </script>
+</head>
+<body>
+<h1>Songs</h1>
+<ul id="songs"></ul>
+
+
+<script>
+    const songs = [
+        {"id": "01", "title": "Thank you for the music", "artist": "ABBA", "rating": 3},
+        {"id": "02", "title": "California Girls", "artist": "Beach Boys", "rating": 2},
+        {"id": "03", "title": "How Deep Is Your Love", "artist": "Bee Gees", "rating": 1},
+        {"id": "04", "title": "Sweet Sixteen", "artist": "Chuck Berry", "rating": 0},
+        {"id": "05", "title": "Roll Over Beethoven", "artist": "Electric Light Orchestra", "rating": 0},
+        {"id": "06", "title": "Booze and Blues", "artist": "Ma Rainey", "rating": 0},
+        {"id": "07", "title": "Beds Are Burning", "artist": "Diesel and Dust", "rating": 0}
+    ];
+
+    // auslesen des Templates
+    const templateSource = document.getElementById("entry-template").innerHTML;
+
+    // Template ist nur ein String, durch das compile() wird daraus eine Template-Function
+    const template = Handlebars.compile(templateSource);
+
+    function renderSongs() {
+        //die Template-Function kann aufgerufen werden. Als Parameter werden die Daten übergeben.
+        document.getElementById("songs").innerHTML = template(songs);
+    }
+
+    function init() {
+        renderSongs();
+    }
+
+    init();
+</script>
+
+</body>
+</html>

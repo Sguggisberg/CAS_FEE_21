@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SPA with Form - Problem Demo</title>
+</head>
+<body>
+<h1>SPA with Form - Problem Demo</h1>
+<ul id="messages-list"></ul>
+<form>
+  <label for="new-message-input">New Message: </label>
+  <input id="new-message-input">
+  <button>Add Message</button>
+</form>
+<script>
+  const newMessageInput = document.getElementById('new-message-input');
+  const messagesList = document.getElementById('messages-list');
+  const submitButton = document.querySelector('button');
+
+  const messages = [];
+
+  function getMessagesHTMLString() {
+    if (messages.length > 0) {
+      return messages.map(message => `<li>${message}</li>`).join('');
+    } else {
+      return '<li>No messages yet. Enter below your first message</li>';
+    }
+  }
+
+  function addNewMessageAndDisplay() {
+    messages.push(newMessageInput.value);
+    console.log('addNewMessageAndDisplay messages: ', messages);
+    messagesList.innerHTML = getMessagesHTMLString();
+  }
+
+  submitButton.addEventListener('click', addNewMessageAndDisplay);
+
+  messagesList.innerHTML = getMessagesHTMLString();
+
+</script>
+</body>
+
+</html>

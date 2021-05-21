@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM CreateInsertAdjacentHtml + MappedTemplateString</title>
+  <style>
+    span {
+      display: block;
+    }
+
+    .insertAdjacentHTML {
+      font-style: italic;
+    }
+
+    #container {
+      border-left: 1px black solid;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<h1>DOM CreateInsertAdjacentHtml + MappedTemplateString</h1>
+<label for="colors">Select a color</label>
+<select id="colors">
+  <option value="no color">no color</option>
+</select>
+<script>
+  const colorsArray = [{color: "red", include: true},
+    {color: "blue", include: true}, {color: "yellow", include: false}]
+  const colorsDropdown = document.querySelector("#colors");
+
+  function createColorsSelectOptionsHTMLString(colorsArray) {
+    return colorsArray
+      .filter(colorRec => colorRec.include)
+      .map(colorRec => `<option value="${colorRec.color}">${colorRec.color}</option>`)
+      .join("");
+  }
+
+  colorsDropdown.insertAdjacentHTML('beforeend', createColorsSelectOptionsHTMLString(colorsArray));
+
+</script>
+</body>
+</html>

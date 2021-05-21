@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form>
+    <label for="id-checkbox">Checkbox:</label>
+    <input type="checkbox" id="id-checkbox"/>
+</form>
+
+<div id="output-box"></div>
+
+<script>
+    document.querySelector("#id-checkbox").addEventListener("click", function (event) {
+        document.querySelector("#output-box").innerHTML += "Sorry! <code>preventDefault()</code> won't let you check this!<br>";
+        event.preventDefault();
+    }, false);
+</script>
+
+</body>
+</html>
+<!--from https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault-->

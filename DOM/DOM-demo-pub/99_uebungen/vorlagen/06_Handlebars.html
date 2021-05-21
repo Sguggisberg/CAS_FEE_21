@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bubbling Events</title>
+
+    <script id="entry-template" type="text/x-handlebars-template">
+        <ul>
+
+
+
+
+
+
+        </ul>
+    </script>
+</head>
+<body>
+
+<h1>Songs</h1>
+
+<div id="container"></div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
+<script src="songmodel.js"></script>
+<script>
+    const container = document.getElementById("container");
+
+    function bubbledClickEventHandler(event) {
+        const buttonSongId = event.target.dataset.songId;
+        if (buttonSongId) {
+            const buttonDelta = Number(event.target.dataset.delta);
+            rate(buttonSongId, buttonDelta);
+        }
+    }
+
+    function rate(id, delta) {
+        rateSong(id, delta);
+        renderSongs();
+    }
+
+    function renderSongs() {
+
+    }
+
+    function init() {
+        renderSongs();
+        container.addEventListener("click", bubbledClickEventHandler);
+    }
+    init();
+</script>
+</body>
+</html>

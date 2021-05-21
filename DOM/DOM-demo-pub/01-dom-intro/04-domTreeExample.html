@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Seitenname</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li>
+            <a href="#">Linktext 1</a>
+        </li>
+        <li>
+            <a href="#">Linktext 2</a>
+        </li>
+    </ul>
+</nav>
+<main>
+    <!--Kommentar-->
+    <h1>Überschrift</h1>
+    <p>
+        Textinhalt
+        <img src="#">
+    </p>
+</main>
+
+<script>
+    function printTree(node, level) {
+        console.log("".padStart(level * 2), node.tagName);
+
+        for (const attr of node.attributes) {
+            console.log("".padStart((level + 1) * 2), "ATTR", `${attr.name}=${attr.value}`);
+        }
+
+        for (const nodeChild of node.children) {
+            printTree(nodeChild, level + 1);
+        }
+    }
+
+    printTree(document.children[0], 0);
+    // monitor(printTree);
+
+</script>
+
+</body>
+</html>

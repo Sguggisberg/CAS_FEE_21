@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Form Validation Demo (custom error display + dirty)</title>
+  <style>
+    label {
+      display: block;
+    }
+
+    label span {
+      display: inline-block;
+      width: 9em;
+      text-align: right;
+    }
+
+    #pw-error {
+      margin-left: 9em;
+      background-color: lavenderblush;
+      width: initial;
+      text-align: left;
+      font-style: initial;
+    }
+
+    input.dirty:not(:focus):invalid {
+      background-color: #FFD9D9;
+      outline: solid darkred 3px;
+      outline-offset: -3px;
+    }
+
+    input.dirty:not(:focus):valid {
+      background-color: #D9FFD9;
+    }
+  </style>
+</head>
+<body>
+<h1>Custom Form Validation Demo (custom error display + dirty)</h1>
+<p>
+  Adapted from
+  <a href="https://wiki.selfhtml.org/wiki/JavaScript/Tutorials/Formulareingaben_mit_JavaScript_validieren">selfhtml</a>
+  and
+  <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation">MDN</a>
+  and
+  <a href="hhttps://developers.google.com/web/fundamentals/design-and-ux/input/forms/">developers.google</a>
+</p>
+
+
+<form novalidate>
+  <fieldset>
+    <legend>Passwort eingeben und bestätigen</legend>
+    <label for="password1"><span>Passwort:</span>
+      <input type="password" required id="password1">
+    </label>
+
+    <label for="password2"><span>Passwort bestätigen:</span>
+      <input type="password" required id="password2">
+      <span id="pw-error" aria-live="polite"></span>
+    </label>
+
+    <button>Absenden</button>
+  </fieldset>
+  <p>Anmerkung: PW+Bestätigungsfeld sollte immer vermieden werden</p>
+</form>
+<script>
+  var password1Element = document.getElementById('password1');
+  var password2Element = document.getElementById('password2');
+  var errorElement = document.getElementById('pw-error');
+  var formElement = document.getElementsByTagName('form')[0];
+
+  function checkPasswordValidity(event) {
+    password2Element.setCustomValidity(''); //reset custom validity
+    formElement.checkValidity();
+    var formInvalid = false;
+    if ((!password1Element.validity.valid) || (!password2Element.validity.valid)) {
+      errorElement.innerText = 'Beide Passworter müssen eingegeben werden!';
+      formInvalid = true;
+    } else {
+      if (password1Element.value !== password2Element.value) {
+        errorElement.innerText = 'Passwörter müssen übereinstimmen!';
+        password2Element.setCustomValidity('error'); //set validity false
+        formInvalid = true;
+      } else {
+        errorElement.innerText = '';
+        password2Element.setCustomValidity(''); //set validity true
+      }
+    }
+    if (formInvalid) {
+      event.preventDefault();
+    }
+  };
+
+  formElement.addEventListener('submit', checkPasswordValidity);
+  password2Element.addEventListener('change', checkPasswordValidity);
+
+  function setDirty(event) {
+    event.target.classList.add('dirty');
+  }
+
+  password1Element.addEventListener('blur', setDirty);
+  password2Element.addEventListener('blur', setDirty);
+
+</script>
+
+</body>
+</html>

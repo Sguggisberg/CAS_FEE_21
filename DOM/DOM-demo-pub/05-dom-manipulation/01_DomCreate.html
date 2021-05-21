@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>createElement Demo</title>
+  <style>
+    #container {
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+<h1>createElement Demo</h1>
+<div id="container"></div>
+<script>
+  const newEl = document.createElement('div');
+  newEl.appendChild(document.createTextNode('Hello'));
+  document.querySelector("#container").appendChild(newEl);
+
+  const newEl2 = document.createElement('div');
+  newEl2.innerText = 'World';
+  document.querySelector("#container").appendChild(newEl2)
+
+</script>
+
+</body>
+</html>

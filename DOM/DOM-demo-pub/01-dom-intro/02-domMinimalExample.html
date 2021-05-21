@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Manipulation First Example</title>
+  <style>
+    textarea {
+      display: block;
+      width: 275px;
+      height: 150px;
+    }
+  </style>
+</head>
+<body>
+<label for="tweet">Your Tweet (180 Characters)</label>
+<textarea id="tweet" maxlength="180" autofocus></textarea>
+<label for="remaining">Remaining: </label>
+<output id="remaining">180</output>
+<script>
+  const TWEET_LENGTH = 180;
+  const remainingOutput = document.querySelector('output');
+  const tweetTextArea = document.querySelector('textarea')
+  tweetTextArea.addEventListener('input',
+    () => {remainingOutput.value = TWEET_LENGTH - tweetTextArea.value.length});
+</script>
+</body>
+</html>

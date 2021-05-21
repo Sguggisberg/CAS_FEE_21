@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
+
+    <script id="template" type="text/x-handlebars-template">
+        {{? hasError 'FEHLER' 'OK' }}
+    </script>
+</head>
+<body>
+
+<div id="container"></div>
+
+
+<script>
+    //Usage: {{? hasError 'error' 'ok'}}
+    Handlebars.registerHelper('?', function(exp, value1, value2, options) {
+        if(exp) {
+            return value1;
+        }
+        return value2;
+    });
+
+
+
+    const templateSource = document.getElementById("template").innerHTML;
+    const template = Handlebars.compile(templateSource);
+
+    function renderSongs() {
+        //die Template-Function kann aufgerufen werden. Als Parameter werden die Daten übergeben.
+        document.getElementById("container").innerHTML = template({hasError : true});
+    }
+    function init() {
+        renderSongs();
+    }
+
+    init();
+</script>
+
+</body>
+</html>

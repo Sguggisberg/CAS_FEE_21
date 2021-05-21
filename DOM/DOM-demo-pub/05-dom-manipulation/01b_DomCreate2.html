@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>insertAdjacentHTML Demo</title>
+  <style>
+    #container {
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+<h1>insertAdjacentHTML Demo</h1>
+<div id="container"></div>
+<script>
+  const container = document.querySelector("#container");
+  container.insertAdjacentHTML('beforebegin', '<div>beforebegin</div>');
+  container.insertAdjacentHTML('afterbegin', '<div>afterbegin</div>');
+  container.insertAdjacentHTML('beforeend', '<div>beforeend</div>');
+  container.insertAdjacentHTML('afterend', '<div>afterend</div>');
+
+</script>
+
+</body>
+</html>

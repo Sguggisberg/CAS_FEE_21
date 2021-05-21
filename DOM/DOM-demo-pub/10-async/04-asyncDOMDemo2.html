@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Async DOM Demo 2</title>
+</head>
+<body>
+<h1>Async DOM Demo 2</h1>
+<h2>Async DOM Updates enable Browser to re-render DOM</h2>
+<button>Start Counting</button>
+<div></div>
+<script>
+  const btnElement = document.querySelector('button');
+  const divElement = document.querySelector('div');
+  let ongoing = true;
+  let counter = 1;
+
+  function countUpFn() {
+    if (ongoing) {
+      divElement.textContent = String(counter += 1);
+      console.log(counter);
+      setTimeout(countUpFn, 500);
+    }
+  }
+
+  function startCountingHandler() {
+    btnElement.disabled = true;
+    setTimeout(() => {
+      ongoing = false;
+      btnElement.disabled = false;
+    }, 5000);
+    counter = 0;
+    ongoing = true;
+    countUpFn();
+  }
+
+  btnElement.addEventListener('click', startCountingHandler);
+</script>
+</body>
+</html>

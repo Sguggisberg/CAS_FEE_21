@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive DOM - PLUS</title>
+  <style>
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: black 3px solid;
+      margin: 10px;
+      margin-left: 50px;
+      width: 100px;
+      height: 100px;
+      background-color: lightpink;
+    }
+
+    .active {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+<h1>Interactive DOM - PLUS</h1>
+<div class="box">Box1</div>
+<div class="box">Box2</div>
+<div class="box">Box3</div>
+<script>
+  document.querySelectorAll('.box')
+    .forEach((box) => box
+      .addEventListener("mouseenter",
+        (event) => {
+          event.target.classList.add('active');
+          event.target.count = (event.target.count) ? event.target.count + 1 : 1;
+          event.target.savedText = event.target.textContent;
+          event.target.textContent = `*${event.target.count}*${event.target.textContent}***`;
+        }));
+  document.querySelectorAll('.box')
+    .forEach((box) => box
+      .addEventListener("mouseleave",
+        (event) => {
+          event.target.classList.remove('active');
+          event.target.textContent = event.target.savedText;
+        }));
+</script>
+</body>
+</html>

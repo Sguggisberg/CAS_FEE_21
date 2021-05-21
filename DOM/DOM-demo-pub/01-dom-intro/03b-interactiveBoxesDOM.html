@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive DOM</title>
+  <style>
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: black 3px solid;
+      margin: 10px;
+      margin-left: 50px;
+      width: 100px;
+      height: 100px;
+      background-color: lightpink;
+    }
+  </style>
+</head>
+<body>
+<h1>Interactive DOM</h1>
+<div class="box">Box1</div>
+<div class="box">Box2</div>
+<div class="box">Box3</div>
+<script>
+  document.querySelectorAll('.box')
+    .forEach((box) => box
+      .addEventListener("mouseenter",
+        (event) => {
+          event.target.style.backgroundColor = 'lightblue';
+          event.target.savedText = event.target.textContent;
+          event.target.textContent = `**${event.target.textContent}**`;
+        }));
+  document.querySelectorAll('.box')
+    .forEach((box) => box
+      .addEventListener("mouseleave",
+        (event) => {
+          event.target.style.backgroundColor = null;
+          event.target.textContent = event.target.savedText;
+        }));
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pic With Buttons In Viewport</title>
+  <style>
+    .viewport {
+      width: 50vw;
+      height: 50vh;
+      overflow: scroll;
+    }
+
+    .viewport::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+
+    .viewport::-webkit-scrollbar:vertical {
+      width: 11px;
+    }
+
+    .viewport::-webkit-scrollbar:horizontal {
+      height: 11px;
+    }
+
+    .viewport::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      border: 2px solid white; /* should match background, can't be transparent */
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .container-img-with-buttons {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .container-img-with-buttons img {
+      grid-row: 1 / 3;
+      grid-column: 1 / 4;
+    }
+
+    .container-img-with-buttons button {
+      grid-row: 2 / 3;
+      margin-bottom: 30px;
+    }
+
+
+    .left-button {
+      grid-column: 1 / 2;
+      justify-self: left;
+      margin-left: 30px;
+    }
+
+    .center-button {
+      grid-column: 2 / 3;
+      justify-self: center;
+    }
+
+    .right-button {
+      grid-column: 3 / 4;
+      justify-self: right;
+      margin-right: 30px;
+    }
+
+
+  </style>
+</head>
+<body>
+<h1>Pic With Buttons In Viewport</h1>
+<div class="viewport">
+  <div class="container-img-with-buttons">
+    <img src="bigPic.jpg">
+    <button class="left-button">Left Button</button>
+    <button class="center-button">Center Button</button>
+    <button class="right-button">Right Button</button>
+  </div>
+</div>
+<script>
+  function updateScrollableContainersSize() {
+    const containers = document.querySelectorAll('.container-img-with-buttons');
+    for (const container of containers) {
+      const img = container.querySelector('img');
+      container.style.width = img.width + 'px';
+      container.style.height = img.height + 'px';
+    }
+  }
+  // activate to force reflow after img load
+  window.addEventListener('load', updateScrollableContainersSize);
+</script>
+
+</div>
+</body>
+</html>

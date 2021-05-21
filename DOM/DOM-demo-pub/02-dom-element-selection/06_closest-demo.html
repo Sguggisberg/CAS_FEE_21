@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Closest Demo</title>
+</head>
+<body>
+<h1>Closest Demo</h1>
+<nav>
+  <ul class="nav">
+    <li class="nav-item">nav1</li>
+    <li class="nav-item">nav2</li>
+    <li class="nav-item">nav3</li>
+  </ul>
+</nav>
+<main>
+  <ul id="list-container">
+    <li>1st</li>
+    <li>2nd</li>
+    <li>3rd</li>
+  </ul>
+</main>
+<script>
+
+  const liElements = document.querySelectorAll('li');
+  console.log(liElements);
+
+  function isInNav(element) {
+    const mayBeNav = element.closest('nav');
+    return Boolean(mayBeNav);
+  }
+
+  function inNavText(element) {
+    return `is ${isInNav(element) ? '' : 'not '}in the Nav Area`;
+  }
+
+  console.log('first li-Element', inNavText(liElements[0]));
+  //output: first li-Element is in the Nav Area
+
+  console.log('last li-Element', inNavText(liElements[liElements.length - 1]));
+  // output: last li-Element is not in the Nav Area
+
+  console.log('DEMO: isInNav(liElements[2])');
+</script>
+</body>
+</html>

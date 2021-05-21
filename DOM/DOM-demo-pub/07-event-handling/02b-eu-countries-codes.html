@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EU Countries Codes</title>
+</head>
+<body>
+
+<h1>EU Countries Codes</h1>
+<ul id="countries"></ul>
+<script src="./eu-countries.js"></script>
+<script>
+  //dom refs
+  const countriesList = document.querySelector("#countries");
+
+  function displayCountries() {
+    for (const country of euCountries) {
+      const liElement = document.createElement("li");
+      liElement.textContent = country.name;
+      const button = document.createElement("button");
+      button.textContent = "Show Code";
+      liElement.appendChild(button);
+      button.addEventListener('click',
+        () => liElement.insertAdjacentText("beforeend", country.code));
+      countriesList.appendChild(liElement);
+    }
+  }
+
+  displayCountries();
+
+</script>
+</body>
+</html>

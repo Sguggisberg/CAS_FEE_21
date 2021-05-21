@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SansJQuery (using Object Factory)</title>
+  <style>
+    .dangerous {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+<h1>Sans JQuery (using Object Factory)</h1>
+<div>
+  <button>b1</button>
+  <button>b2</button>
+  <button>b3</button>
+  <button>b4</button>
+</div>
+</body>
+<script>
+  // Optional exercise: recreate JQuery API including chaining
+  // for addClass(), removeClass(), data(), 
+
+  // solution:
+  // there is no $$ only $
+
+  function createJQWrapperObj(elements) {
+    jQWrapperObj = {};
+    const addClass = (className) => {
+      elements.forEach((elm) => elm.classList.add(className));
+      return jQWrapperObj;
+    };
+    const removeClass = (className) => {
+      elements.forEach((elm) => elm.classList.add(className));
+      return jQWrapperObj;
+    };
+    const data = (key, value) => {
+      if (value === undefined) { // store data
+        this.elements.forEach((elm) => elm.dataset[key] = value);
+      } else {
+        // not supported Obj argument
+        //returns non-chainable array
+        return elements.map((elm) => elm.dataset[key]);
+      }
+    };
+    jQWrapperObj.addClass = addClass;
+    jQWrapperObj.removeClass = removeClass;
+    jQWrapperObj.data = data;
+    return jQWrapperObj;
+  }
+
+  function $(queryString) {
+    const elements = document.querySelectorAll(queryString);
+    return createJQWrapperObj(elements);
+  }
+
+  console.log($('button')); //-> <button>b1</button>
+  $('button').addClass('dangerous'); // works
+
+</script>
+</html>

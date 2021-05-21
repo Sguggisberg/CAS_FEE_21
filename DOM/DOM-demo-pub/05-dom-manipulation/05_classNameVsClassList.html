@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>className vs. classList</title>
+  <style>
+    .box {
+      border: 1px black solid;
+    }
+
+    .box-warning {
+      border-color: blue;
+      background: yellow;
+    }
+  </style>
+</head>
+<body>
+<h1>className vs. classList</h1>
+
+<div id="el" class="box alert important">Text1</div>
+<div id="el2" class="box alert important">Text2</div>
+<div id="el-classic" class="box alert important">Text3</div>
+
+
+<script>
+  console.log(document.querySelector("#el").className); // box alert important
+  console.log(document.querySelector("#el").classList); // DOMTokenList(3) ["box", "alert", "important"]
+
+  const list = document.querySelector("#el").classList;
+  list.add("box-warning");
+
+  document.querySelector("#el2").classList.toggle("box-warning");
+  document.querySelector("#el-classic").className += " box-warning";
+</script>
+</body>
+</html>

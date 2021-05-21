@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Events Demo using Listener-Object</title>
+</head>
+<body>
+<h1>DOM Events Demo using Listener-Object</h1>
+
+<button id="btnClickMe">click me</button>
+<div id="container"></div>
+
+<script>
+  const btn = document.querySelector("#btnClickMe");
+  const container = document.querySelector("#container");
+  const eventListenerObject = {
+    count: 1,
+    handleEvent: function () {
+      container.appendChild(document.createTextNode(`count: ${this.count++} | `))
+    }
+  };
+  btn.addEventListener("click", eventListenerObject);
+</script>
+</body>
+</html>

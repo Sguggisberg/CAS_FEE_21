@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Referencing the Value Demo</title>
+</head>
+<body>
+<h1>Referencing the Value Demo</h1>
+
+<label for="inpt">The Value</label>
+<input id="inpt" name="thevalue" value="the default value">
+<hr>
+<button id="btn">submit</button>
+<script>
+  const theValue = document.querySelector("#inpt").value;
+  const theButton = document.querySelector("#btn")
+  theButton.addEventListener('click', () => console.log('the value is: ', theValue));
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Append Operations</title>
+</head>
+<body>
+<h1>Songs</h1>
+<ul id="songs">
+    <li>
+        <h3>Thank you for the music</h3>
+        <p>ABBA</p>
+    </li>
+    <li>
+        <h3>California Girls</h3>
+        <p>Beach Boys</p>
+    </li>
+    <!--TODO Example entries -->
+</ul>
+
+<script src="songmodel.js"></script>
+<script>
+    function renderSongs(songs) {
+        const df = document.createDocumentFragment();
+
+        // TODO HTML Struktur mit createElement() erstellen.
+        // h3 und p Elemente an das li-Element hängen
+        // li-Elemente an das document-fragment hängen
+        for (const song of songs) {
+
+        }
+        document.querySelector("#songs").appendChild(df);
+    }
+
+    renderSongs();
+</script>
+</body>
+</html>

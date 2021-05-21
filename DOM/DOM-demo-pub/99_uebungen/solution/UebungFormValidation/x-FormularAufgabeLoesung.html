@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Validation Aufgabe</title>
+  <style>
+    label {
+      display: block;
+    }
+
+    label > span {
+      display: inline-block;
+      width: 150px;
+      text-align: right;
+    }
+
+    input.dirty:not(:focus):invalid {
+      background-color: #FFD9D9;
+    }
+
+    input.dirty:not(:focus):valid {
+      background-color: #D9FFD9;
+    }
+
+    button {
+      margin-left: 154px;
+    }
+
+    form:invalid button::before {
+      content: "Check";
+    }
+
+    form:valid button::before {
+      content: "Send";
+    }
+  </style>
+  <script src="checkLuhn.js"></script>
+  <script src="checkMMYYValid.js"></script>
+</head>
+<body>
+<h1>Form Validation Aufgabe</h1>
+
+<h2>Enter your Credit Card Information</h2>
+<form action="payInfo">
+  <label>
+    <span>Name on Card</span>
+    <input id="name" name="name" required>
+  </label>
+  <label>
+    <span>Number</span>
+    <input id="cardNumber" name="cardNumber" type="number" required>
+  </label>
+  <label>
+    <span>Expiration MM-YY</span>
+    <input id="expiration" name="expiration" required>
+  </label>
+  <button></button>
+</form>
+<script>
+  function initApp() {
+    function $ (s) {
+      return document.querySelector(s);
+    }
+    var nameInput = $('#name');
+    var numberInput = $('#cardNumber');
+    var expirationInput = $('#expiration');
+
+    numberInput.addEventListener('input', function() {
+      if (checkLuhn(numberInput.value)) {
+        numberInput.setCustomValidity('');
+      } else {
+        numberInput.setCustomValidity('Error in Card Number');
+      }
+    });
+    expirationInput.addEventListener('input', function() {
+      if (checkMMYYValid(expirationInput.value)) {
+        expirationInput.setCustomValidity('');
+      } else {
+        expirationInput.setCustomValidity('Error in Expiration Date');
+      }
+    });
+
+    function setDirty(event) {
+      event.currentTarget.classList.add('dirty');
+    }
+
+    nameInput.addEventListener('blur', setDirty);
+    numberInput.addEventListener('blur', setDirty);
+    expirationInput.addEventListener('blur', setDirty);
+  }
+
+  window.onload = initApp();
+</script>
+</body>
+</html>

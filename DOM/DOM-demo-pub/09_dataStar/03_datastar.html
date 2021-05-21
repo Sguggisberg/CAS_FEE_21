@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="add">Add Entry</button>
+
+<ul id="container">
+    <li class="js-item-container" data-id="1">
+        item 1
+        <input class="js-add" type="button" value="ADD">
+        <input class="js-delete" type="button" value="X">
+    </li>
+    <li class="js-item-container" data-id="2">item 2 <input class="js-delete" type="button" value="X"></li>
+    <li class="js-item-container" data-id="5">item 5 <input class="js-delete" type="button" value="X"></li>
+    <li class="js-item-container" data-id="11">item 11 <input class="js-delete" type="button" value="X"></li>
+    <li class="js-item-container" data-id="13">item 13 <input class="js-delete" type="button" value="X"></li>
+    <li class="js-item-container" data-id="15">item 15 <input class="js-delete" type="button" value="X"></li>
+    <li class="js-item-container" data-id="16">item 16 <input class="js-delete" type="button" value="X"></li>
+</ul>
+
+
+
+<script>
+    const container = document.getElementById("container");
+
+    let counter = 999;
+    document.getElementById("add").addEventListener("click", () => {
+        container.insertAdjacentHTML('beforeend', `<li class="js-item-container" data-id="${counter}">item ${counter}<input class="js-delete" type="button" value="X"></li>`)
+        counter--;
+    });
+
+    container.addEventListener("click", (args) => {
+        const container = args.target.closest(".js-item-container");
+        const id = container.dataset.id;
+        if (args.target.classList.contains("js-delete")) {
+            console.log("remove", id);
+            container.parentNode.removeChild(container);
+            args.stopPropagation();
+        }
+        else if (args.target.classList.contains("js-add")) {
+            console.log("add", id);
+            args.stopPropagation();
+        }
+    });
+
+</script>
+</body>
+</html>

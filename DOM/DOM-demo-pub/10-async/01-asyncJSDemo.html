@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Async JS Demo</title>
+</head>
+<body>
+<h1>Async JS Demo</h1>
+<p>open console</p>
+<script>
+  function asyncDemo(delay, delta) {
+    console.log(`asyncDemo start with delay=${delay}, delta=${delta}`);
+    setTimeout(() => console.log('completed timeout1'), delay + 3 * delta);
+    setTimeout(() => console.log('completed timeout2'), delay + 2 * delta);
+    setTimeout(() => console.log('completed timeout3'), delay + 1 * delta);
+    for (let i = 1; i < 4; i++) {
+      console.log('main thread ' + i);
+    }
+    console.log('asyncDemo end');
+  }
+
+  asyncDemo(0, 0);
+  setTimeout(() => asyncDemo(0, 1), 1000);
+  setTimeout(() => asyncDemo(10, 0), 3000);
+
+  function asyncSurpriseDemo(delay, delta) {
+    console.log(`asyncSurpriseDemo start with delay=${delay}, delta=${delta}`);
+    let i;
+    for (i = 1; i < 4; i++) {
+      setTimeout(() => console.log(`completed timeout${i}, total delay: ${delay + i * delta}`),
+        delay + i * delta);
+    }
+    for (i = 1; i < 4; i++) {
+      console.log('main thread ' + i);
+    }
+    console.log('asyncDemo end');
+  }
+
+  setTimeout(() => asyncSurpriseDemo(10, 1), 5000);
+
+</script>
+</body>
+</html>

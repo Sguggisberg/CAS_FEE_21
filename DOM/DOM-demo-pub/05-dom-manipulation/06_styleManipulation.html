@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Style Manipulation Demo</title>
+</head>
+<body>
+<h1>Style Manipulation Demo</h1>
+<div id="theDiv">Style Me</div>
+<script>
+  const theDiv = document.querySelector("#theDiv");
+  console.log(theDiv.style);
+  console.log(window.getComputedStyle(theDiv));
+  theDiv.style.background = "yellow";
+  theDiv.style.fontSize = "30px";
+  console.log(theDiv.style);
+</script>
+</body>
+</html>

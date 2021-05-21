@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bubbling Events</title>
+  <script src="index.js" type="module"></script>
+  <style>
+    @keyframes blink {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    #loading {
+      animation: blink 300ms linear infinite;
+    }
+    .showing {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<h1>Songs</h1>
+<p id="loading" hidden>Loading ...</p>
+<ul id="songs"></ul>
+</body>
+</html>

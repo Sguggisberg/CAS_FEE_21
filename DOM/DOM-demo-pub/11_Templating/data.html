@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js" integrity="sha256-qlku5J3WO/ehJpgXYoJWC2px3+bZquKChi4oIWrAKoI=" crossorigin="anonymous"></script>
+
+    <script id="songs-list-template" type="text/x-handlebars-template">
+        <figure>
+            <ul>
+                {{#each items}}
+                <li>
+                    <h3>{{title}}</h3>
+                    <p>{{artist}}</p>
+                    <button data-delta="1" data-song-id="${song.id}">+</button>
+                    <button data-delta="-1" data-song-id="${song.id}">-</button>
+                </li>
+                {{/each}}
+            </ul>
+            <figcaption>
+                <p>{{description}}</p>
+            </figcaption>
+        </figure>
+
+    </script>
+</head>
+<body>
+<div id="song-container">
+
+</div>
+
+
+<script>
+    const songs = [
+        {"id": "01", "title": "Thank you for the music", "artist": "ABBA", "rating": 3},
+        {"id": "02", "title": "California Girls", "artist": "Beach Boys", "rating": 2},
+        {"id": "03", "title": "How Deep Is Your Love", "artist": "Bee Gees", "rating": 1},
+        {"id": "04", "title": "Sweet Sixteen", "artist": "Chuck Berry", "rating": 0},
+        {"id": "05", "title": "Roll Over Beethoven", "artist": "Electric Light Orchestra", "rating": 0},
+        {"id": "06", "title": "Booze and Blues", "artist": "Ma Rainey", "rating": 0},
+        {"id": "07", "title": "Beds Are Burning", "artist": "Diesel and Dust", "rating": 0}
+    ];
+
+    // auslesen des Templates
+    const songsListTemplateSource = document.getElementById("songs-list-template").innerHTML;
+
+    // Template ist nur ein String, durch das compile() wird daraus eine Template-Function
+    const createSongsListHtmlString = Handlebars.compile(songsListTemplateSource);
+
+    function renderSongs() {
+        //die Template-Function kann aufgerufen werden. Als Parameter werden die Daten übergeben.
+        document.getElementById("song-container").innerHTML = createSongsListHtmlString({description: "List of some Movies", items: songs});
+    }
+
+    function init() {
+        renderSongs();
+    }
+
+    init();
+</script>
+
+</body>
+</html>

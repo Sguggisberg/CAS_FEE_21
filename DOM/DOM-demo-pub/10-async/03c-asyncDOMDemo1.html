@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Async DOM Demo 1</title>
+</head>
+<body>
+<h1>Async DOM Demo 1</h1>
+<h2>No DOM Updates with busy Main Thread</h2>
+<p>ATTENTION: Clicking the button below will freeze the tab.</p>
+<p>The only way to stop it is to close the tab (might take a moment ot react).</p>
+<button>Click Me</button>
+<div></div>
+<script>
+  const btnElement = document.querySelector('button');
+  const divElement = document.querySelector('div');
+  let ongoing = true;
+
+  function countUpFn() {
+    let i = 1;
+    ongoing = true;
+    setTimeout(() => {
+      ongoing = false;
+      divElement.innerHTML = 'terminated';
+    }, 100);
+    while (ongoing) {
+      divElement.textContent = String(i++);
+      console.log(i);
+    }
+  }
+
+  btnElement.addEventListener('click', countUpFn);
+</script>
+</body>
+</html>

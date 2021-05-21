@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM-Create Performance Comparison</title>
+</head>
+<body>
+<h1>Fragment Vs NoFragment DOM Insertion Performance</h1>
+<ul id="container"></ul>
+<script>
+  const NODE_COUNT = 10000;
+  const ulElement = document.querySelector('#container');
+
+    function appendLiTextContent(parentListElement, textContent) {
+      const newLi = document.createElement('li');
+      newLi.textContent = textContent;
+      parentListElement.appendChild(newLi);
+    }
+
+  function appendLiTextElement(parentListElement, textContent) {
+    const newLi = document.createElement('li');
+    newLi.appendChild(document.createTextNode(textContent));
+    parentListElement.appendChild(newLi);
+  }
+
+  function appendLiAdjacentHTML(parentListElement, textContent) {
+    parentListElement.insertAdjacentHTML('beforeend', `<li>${textContent}</li>`);
+  }
+
+  function appendLiAdjacentElement(parentListElement, textContent) {
+    const newLi = document.createElement('li');
+    newLi.textContent = textContent;
+    parentListElement.insertAdjacentElement('beforeend', newLi);
+  }
+
+  const t0 = performance.now();
+
+  // no fragment, dom createElement / assign text content
+  // Ch: 22 +/- 7 MSec || Fx: 14 +/- 3 MSec
+  // for (let i = 0; i < NODE_COUNT; i++) {
+  //   appendLiTextContent(ulElement, String(i));
+  // }
+
+  // String fragment, create string then append in one go
+  // 23 +/- 7 MSec || 13 +- 4 MSec
+  // let liFragmentString = '';
+  // for (let i = 0; i < NODE_COUNT; i++) {
+  //   liFragmentString += `<li>${String(i)}</li>`;
+  // }
+  // ulElement.innerHTML = liFragmentString;
+
+  // no fragment, appendLiAdjacentElement
+  //Ch: 23 MSec || Fx: 16 +- 4 MSec
+  // for (let i = 0; i < NODE_COUNT; i++) {
+  //   appendLiAdjacentElement(ulElement, String(i));
+  // }
+
+
+  // no fragment, dom createElements
+  // Ch: 25 +/- 7 MSec || Fx 15 +/- 4 MSec
+  // for (let i = 0; i < NODE_COUNT; i++) {
+  //   appendLiTextElement(ulElement, String(i));
+  // }
+
+
+  // fragment
+  // Ch: 29 MSec || Fx: 15 +/- 4 MSec
+  // const fragment = document.createDocumentFragment();
+  // for (let i = 0; i < NODE_COUNT; i++) {
+  //   appendLiTextContent(fragment, String(i));
+  // }
+  // ulElement.appendChild(fragment);
+
+  // no fragment, appendLiAdjacentHTML
+  //Ch: 100 MSec || Fx: 17 +/- 4 MSec
+  // for (let i = 0; i < NODE_COUNT; i++) {
+  //   appendLiAdjacentHTML(ulElement, String(i));
+  // }
+
+
+  // append string incrementally DONT DO THIS
+  // Chrome: 115'626 MSec -> DONT DO THIS || FX -- similar
+  for (let i = 0; i < NODE_COUNT; i++) {
+    ulElement.innerHTML += `<li>${String(i)}</li>`;
+  }
+
+
+
+  const t1 = performance.now();
+  console.log(t1 - t0, 'milliseconds');
+</script>
+</body>
+</html>

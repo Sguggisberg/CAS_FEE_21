@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EventListener Registration 3 Options</title>
+</head>
+<body>
+<h1>EventListener Registration 3 Options</h1>
+<button onclick="alert('1')">1</button>
+<button id="2">2</button>
+<button id="3">3</button>
+
+<script>
+    document.querySelector("#2").onclick = () => alert('2');
+    document.querySelector("#3").addEventListener("click", () => alert('3'));
+</script>
+
+
+</body>
+</html>

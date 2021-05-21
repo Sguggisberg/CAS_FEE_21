@@ -294,6 +294,8 @@ Mit `grid-template-rows` können wir die Höhen der Rows steuern. Dies funktioni
 
 **Demo** 🤯
 
+Lösung: https://codesandbox.io/s/01-02-html-forked-5o4xv *********************************************************
+
 - [Row / Column Start und Ende](https://codesandbox.io/s/krbik)
 
 #### Justify / Align

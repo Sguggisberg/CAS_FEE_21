@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Handling using Data Attributes</title>
+  <style>
+      h3 {
+          margin-bottom: 0
+      }
+  </style>
+</head>
+<body>
+
+<h1>Songs</h1>
+
+<ul id="songs"></ul>
+
+<script src="songmodel.js"></script>
+
+<script>
+
+  //DOM Refs
+  const songListElement = document.querySelector("#songs");
+
+  // Rendering
+  function createSongsHtml(songs) {
+    //todo insert buttons using createButtonHtml
+    return songs.map(song =>
+      `<li>
+            <h3>
+                ${song.rating}
+                ${song.title}
+            </h3>
+        ${song.artist}
+      </li>`).join('');
+  }
+
+  function createButtonHtml(songId, delta) {
+    //todo
+    //use the data-* attributes for providing data for event-handling
+    // e.g. data-id and data-delta
+    return `..replace this..`;
+  }
+
+  function renderSongs() {
+    //assigning innerHTML once is fine. Doing it repeatedly is a problem
+    songListElement.innerHTML = createSongsHtml(songsSorted());
+    //NOTE: Here we attach the event-handler to each button
+    //each time the list has been re-rendered.
+    //This is usually a bad idea. It might cause unnecessary delays and generate memory leaks
+    //Instead, a bubbling event-handler should be used (see later)
+    attachEventHandlers();
+  }
+
+  function handleRateSong(event) {
+    // todo
+    // this is the event handler that gets attached to each button
+    // read get the data-* from the target of the event and pass them to to the rateSong function
+    // then re-render
+    //
+    // const songId = ...
+    // const delta = ...
+    // rateSong(songId, delta);
+    // ....
+  }
+
+  function attachEventHandlers() {
+    // todo
+    // const buttons = ....;
+    // for (const button ????? buttons) { // of or in?
+    //   button....
+    // }
+  }
+
+  renderSongs(); //todo why is this needed?
+</script>
+</body>
+</html>

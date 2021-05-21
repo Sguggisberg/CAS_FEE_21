@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive CSS</title>
+  <style>
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: black 3px solid;
+      margin: 10px;
+      margin-left: 50px;
+      width: 100px;
+      height: 100px;
+      background-color: lightpink;
+    }
+
+    .box:hover,
+    .box:focus {
+      background-color: lightblue;
+    }
+
+    :is(.box:hover, .box:focus)::before,
+    :is(.box:hover, .box:focus)::after {
+      content: '**';
+    }
+  </style>
+</head>
+<body>
+<h1>Interactive CSS</h1>
+
+<div class="box" tabindex="0">Box1</div>
+<div class="box" tabindex="0">Box2</div>
+<div class="box" tabindex="0">Box3</div>
+
+</body>
+</html>

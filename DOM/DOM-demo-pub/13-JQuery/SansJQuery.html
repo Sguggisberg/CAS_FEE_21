@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SansJQuery</title>
+  <style>
+    .dangerous {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+<h1>Sans JQuery</h1>
+<div>
+  <button>b1</button>
+  <button>b2</button>
+  <button>b3</button>
+  <button>b4</button>
+</div>
+</body>
+<script>
+  function $(queryString) {
+    return document.querySelector(queryString);
+  }
+
+  function $$(queryString) {
+    return document.querySelectorAll(queryString);
+  }
+
+  console.log($('button')); //-> <button>b1</button>
+  $('button').classList.add('dangerous'); // works
+
+  //$$('button').classList.add('dangerous'); // does not "work"
+
+  //
+  // making it work
+  //
+  // function $$(queryString) {
+  //   const elements = document.querySelectorAll(queryString);
+  //   elements.classList = {
+  //     add: function(classesStr) {
+  //       elements.forEach(e => e.classList.add(classesStr));
+  //     },
+  //   };
+  //   return elements;
+  // }
+
+  //
+  // better way of making it work -> explicit iteration
+  //
+  for (button of  $$('button')) {
+    button.classList.add('dangerous');
+  }
+
+
+
+</script>
+</html>

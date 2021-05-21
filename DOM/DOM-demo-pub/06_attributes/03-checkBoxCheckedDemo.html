@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkbox Checked Test</title>
+  <style>
+    input[type="checkbox"] {
+      margin: 10px;
+    }
+
+    #cbox1[checked] {
+      /* problem */
+      outline-offset: 2px;
+      outline: #ee001c 3px solid;
+    }
+
+    #cbox2:checked {
+      /* works */
+      outline-offset: 2px;
+      outline: #ee001c 3px solid;
+    }
+  </style>
+</head>
+<body>
+<h1>Demo: Do not use Properties for Boolean Attributes with CSS Attribute Selectors</h1>
+<input id="cbox1" type="checkbox" name="chbox1" checked>
+<input id="cbox2" type="checkbox" name="chbox2" checked>
+<br>
+
+<script>
+  function init() {
+    button = document.querySelector("#btn");
+    cbox1 = document.querySelector("#cbox1");
+    setInterval(() => {
+        cbox1.checked = !cbox1.checked;
+        cbox2.checked = !cbox2.checked;
+      }
+      , 1500)
+  }
+
+  init();
+</script>
+</body>
+</html>

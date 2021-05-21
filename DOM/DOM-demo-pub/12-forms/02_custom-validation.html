@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Validation For Demo</title>
+</head>
+<body>
+<h1>Custom Validation For Demo</h1>
+<form>
+    <label for="value">Value:</label>
+    <input id="value" minlength="10" required>
+    <input type="submit">
+</form>
+
+<script>
+    const value = document.getElementById("value");
+
+    value.addEventListener("input", function (event) {
+        if (value.validity.tooShort) {
+            value.setCustomValidity("Viel zu kurz!");
+        } else {
+            value.setCustomValidity("");
+        }
+    });
+</script>
+</body>
+</html>

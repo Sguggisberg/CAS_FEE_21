@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>First Form</title>
+  <style>
+    label {
+      display: block;
+    }
+
+    input:invalid {
+      box-shadow: 0 0 5px 1px red;
+    }
+  </style>
+</head>
+<body>
+<h1>First Form</h1>
+<form action="01b-firstFormSubmit.html">
+  <label for="message"><span>Message: </span>
+    <input id="message" name="message"
+           type="text" placeholder="Your Message Here" required>
+  </label>
+  <button>Send Message</button>
+</form>
+</body>
+</html>

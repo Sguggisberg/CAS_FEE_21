@@ -1,0 +1,22 @@
+{
+  "name": "cas-fee-linting-profile",
+  "version": "1.0.0",
+  "description": "cas-fee-linting-profile",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stylelint": "stylelint \"./source/**/*.css\"",
+    "w3c": "html-validator --file ./source/public/index.html  --verbose",
+    "eslint": "eslint ./source/**/*.js",
+    "all": "npm run stylelint && npm run w3c  && npm run eslint  && node -e \"console.log('npm run all completed')\""
+  },
+  "author": "Michael Gfeller / Markus Stolze",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "html-validator-cli": "^7.0.1",
+    "stylelint": "^13.12.0",
+    "stylelint-config-standard": "^21.0.0"
+  }
+}

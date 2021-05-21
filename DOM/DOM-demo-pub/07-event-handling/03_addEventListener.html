@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="container">
+        <div id="id1">item1</div>
+        <div id="id2">item2</div>
+        <div id="id3">item3</div>
+        <div id="id4">item4</div>
+</div>
+<script>
+    const handlerFactory = (index) => () => console.log(index);
+    document.querySelector("#container").addEventListener("click", handlerFactory("capture=false"), {capture: false});
+    document.querySelector("#container").addEventListener("click", handlerFactory("capture=true"), {capture: true});
+    
+    document.querySelector("#container").addEventListener("click", handlerFactory("once"), {once: true})
+    document.querySelector("#container").addEventListener("click", handlerFactory("normal"))
+
+</script>
+</body>
+</html>

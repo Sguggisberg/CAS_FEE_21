@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Child Nodes</title>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="#">nav1</a></li>
+    <li><a href="#">nav2</a></li>
+    <li><a href="#">nav3</a></li>
+  </ul>
+</nav>
+<script>
+  // working
+  const ulElement = document.querySelector('ul');
+  liElement = document.createElement("LI");
+  liElement.innerHTML = '<a href="#">nav4</a>';
+  ulElement.appendChild(liElement);
+
+  // not working
+  firstChild = document.querySelector('nav').firstChild;
+  // console.log('firstChild', firstChild);
+  liElement = document.createElement("LI");
+  liElement.innerHTML = '<a href="#">nav5</a>';
+  firstChild.appendChild(liElement);
+
+
+</script>
+
+</body>
+</html>

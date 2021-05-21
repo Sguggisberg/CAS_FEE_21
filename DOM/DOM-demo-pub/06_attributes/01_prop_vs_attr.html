@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Properties vs. Attributes - Complicated</title>
+</head>
+<body>
+<input id="inptBtn1" type="button" value="btnInitValue">
+<input id="inptTxt1" value="txtInitValue">
+<br>
+<input id="inptBtn2" type="button" value="btnInitValue">
+<input id="inptTxt2" value="txtInitValue">
+<script>
+  const inputBtn1 = document.querySelector('#inptBtn1');
+  const inputTxt1 = document.querySelector('#inptTxt1');
+  inputBtn1.value = 'newInputBtnPropValue'; // causes attribute update
+  inputTxt1.value = 'newInputTxtPropValue'; // no attribute update
+  console.log(inputBtn1);
+  console.log(inputTxt1);
+
+  const inputBtn2 = document.querySelector('#inptBtn2');
+  const inputTxt2 = document.querySelector('#inptTxt2');
+  inputBtn2.setAttribute('value', 'newInputBtnAttrValue');
+  inputTxt2.setAttribute('value', 'newInputTxtAttrValue');
+  console.log(inputBtn2.value);
+  console.log(inputBtn2);
+  console.log(inputTxt2.value);
+  console.log(inputTxt2);
+
+  // input.dataMyProp = 'myPropValue';
+  // input.setAttribute('data-my-prop2', 'my-prop2-value');
+  // console.log(input.getAttribute('value'));
+  // setTimeout(() => console.log(input), 10);
+  // setTimeout(() => input.setAttribute('value', '5678'), 10);
+  // setTimeout(() => console.log(input), 10);
+</script>
+
+</body>
+</html>

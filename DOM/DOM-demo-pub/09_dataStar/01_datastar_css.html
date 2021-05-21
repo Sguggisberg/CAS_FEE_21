@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>JS Bin</title>
+  <style type="text/css">
+    article {
+      position: relative;
+      display: block;
+      max-width: 200px;
+      padding: 10px;
+    }
+
+    article::before {
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+      position: absolute;
+      content: "👍" attr(data-likes);
+      font-size: 1em;
+      left: 0;
+      top: -10px;
+    }
+
+  </style>
+</head>
+<body>
+<article
+    id="cars-electro"
+    data-likes="10">
+  Elektro
+</article>
+
+<article
+    id="cars-classic"
+    data-likes="0">
+  Klassische Autos
+</article>
+
+
+<script>
+  const article = document.querySelector('#cars-electro');
+
+  let counter = 10;
+  setInterval(() => article.dataset.likes = counter++, 1000);
+</script>
+</body>
+</html>

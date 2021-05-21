@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getElementsXY Selection (HTMLCollection)</title>
+</head>
+<body>
+<nav>
+    <ul class="nav">
+        <li class="nav-item">nav1</li>
+        <li class="nav-item">nav2</li>
+        <li class="nav-item">nav3</li>
+    </ul>
+</nav>
+<main>
+    <ul id="list-container">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+        <li>4th</li>
+    </ul>
+
+</main>
+<script>
+    const listContainer = document.getElementById('list-container');
+    console.log(listContainer);
+
+    const lis = document.getElementsByTagName('li');
+    console.log(lis);
+
+    const navItems = document.getElementsByClassName('nav-item');
+    console.log(navItems);
+
+    const nav = document.getElementsByClassName('nav');
+    console.log(nav);
+</script>
+</body>
+</html>

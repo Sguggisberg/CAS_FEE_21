@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    html * {
+      padding: 10px;
+      border: 1px black solid;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <button>Click me</button>
+</div>
+<script>
+
+  let counter = 1;
+  const handler = (args) => {
+    console.log(counter++, args.target, args.currentTarget);
+  };
+
+  document.querySelector("body").addEventListener("click", handler, {capture: true});
+  document.querySelector("body").addEventListener("click", handler);
+
+  document.querySelector("div").addEventListener("click", handler, {capture: true});
+  document.querySelector("div").addEventListener("click", handler);
+
+  document.querySelector("button").addEventListener("click", handler);
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTMLCollection NodeList Iterating</title>
+</head>
+<body>
+<nav>
+    <ul class="nav">
+        <li class="nav-item">nav1</li>
+        <li class="nav-item">nav2</li>
+        <li class="nav-item">nav3</li>
+    </ul>
+</nav>
+<main>
+    <p>Anzahl Einträge: 3</p>
+
+    <ul id="list-container">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+        <li>4th</li>
+    </ul>
+
+</main>
+<script>
+
+
+    const liElements = document.getElementsByTagName('li');
+    console.log(Array.isArray(liElements));
+
+    console.log(liElements);
+
+    for (let i = 0; i < liElements.length; i++) {
+        console.log("for", liElements[i]);
+    }
+
+    for (const item of liElements) {
+        console.log("for of", item);
+    }
+
+    // >>> error
+    // navItems
+    //    .filter((el, i) => i % 2 === 0)
+    //    .forEach(el => el.style.background = "green");
+
+    function setBackgroundColor (domElement, color) {
+        domElement.style.background = color
+    }
+
+    [...liElements]
+        .filter((el, i) => i % 2 === 0)
+        .forEach(el => setBackgroundColor(el, "lightblue"));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    span {
+      display: block;
+    }
+
+    .insertAdjacentHTML {
+      font-style: italic;
+    }
+
+    #container {
+      border-left: 1px black solid;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+
+</div>
+
+<script>
+
+  function createSpanWithText(text) {
+    const span = document.createElement("span");
+    span.innerText = text;
+    return span;
+  }
+
+  const container = document.querySelector("#container");
+
+  container.appendChild(createSpanWithText("appendChild 1"));
+  container.appendChild(createSpanWithText("appendChild 2"));
+  const child3 = createSpanWithText("appendChild 3");
+  container.appendChild(child3);
+  const child4 = createSpanWithText("appendChild 4");
+  container.appendChild(child4);
+
+  /*
+  container.insertBefore(createSpanWithText("insertBefore 3"), child3);
+  container.removeChild(child3);
+
+  container.replaceChild(createSpanWithText("replaceChild 4"), child4);
+
+  // some for  insertAdjacentElement & insertAdjacentText
+  container.insertAdjacentHTML("beforebegin", "<span class='insertAdjacentHTML'>beforebegin</span>");
+  container.insertAdjacentHTML("beforeend", "<span class='insertAdjacentHTML'>beforeend</span>");
+  container.insertAdjacentHTML("afterbegin", "<span class='insertAdjacentHTML'>afterbegin</span>");
+  container.insertAdjacentHTML("afterend", "<span class='insertAdjacentHTML'>afterend</span>");*/
+
+</script>
+</body>
+</html>
